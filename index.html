@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons8-stock-20.png" />
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
+    <title>Indicators</title>
+</head>
+
+<body>
+    <div class="info-buttons">
+        <button id="bell"><i class="fas fa-plus"></i></button>
+        <button id="close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="balance-sheet">
+        <div class="elements">
+            <ul id="elements">
+                <li class="title">elements(<span class="bs-symbol"></span>)</li>
+                <hr>
+                <li> ANNUAL REPORTS</li>
+                <hr>
+                <li>total assets</li>
+                <li>current assets</li>
+                <li>noncurrent assets</li>
+                <hr>
+                <li>total liabilities</li>
+                <li>current liabilities</li>
+                <li>noncurrent liabilities</li>
+                <hr>
+                <li>shareholders' equity</li>
+                <hr>
+                <li>QUARTERLY REPORTS</li>
+                <hr>
+                <li>total assets</li>
+                <li>current assets</li>
+                <li>noncurrent assets</li>
+                <hr>
+                <li>total liabilities</li>
+                <li>current liabilities</li>
+                <li>noncurrent liabilities</li>
+                <hr>
+                <li>shareholders' equity</li>
+            </ul>
+        </div>
+        <div class="values">
+            <ul id="values">
+                <li class="title">value(<span class="currency"></span>)</li>
+                <hr>
+                <li>
+                    ANNUAL REPORTS
+                </li>
+                <hr>
+                <li><span class="total-assets-a"> </span></li>
+                <li><span class="current-assets-a"></span></li>
+                <li><span class="noncurrent-assets-a"></span></li>
+                <hr>
+                <li><span class="total-liabilities-a"></span></li>
+                <li><span class="current-liabilities-a"></span></li>
+                <li><span class="noncurrent-liabilities-a"></span></li>
+                <hr>
+                <li><span class="shareholders-equity-a"></span></li>
+                <hr>
+                <li>
+                    QUARTERLY REPORTS
+                </li>
+                <hr>
+                <li><span class="total-assets-q"> </span></li>
+                <li><span class="current-assets-q"></span></li>
+                <li><span class="noncurrent-assets-q"></span></li>
+                <hr>
+                <li><span class="total-liabilities-q"></span></li>
+                <li><span class="current-liabilities-q"></span></li>
+                <li><span class="noncurrent-liabilities-q"></span></li>
+                <hr>
+                <li><span class="shareholders-equity-q"></span></li>
+
+            </ul>
+        </div>
+    </div>
+    <form action="">
+        <input id="search" type="text">
+
+        <button id='search-button'>Search</button>
+    </form>
+    <div class="sorry">
+        <h2><i class="fas fa-sad-cry"></i> no data here <i class="fas fa-sad-cry"></i></h2>
+    </div>
+    <div class="suggestions">
+
+
+    </div>
+    <div class="sections">
+        <div class="general-info">
+            <h2 class="name"></h2>
+            <h4 class="type"></h4>
+            <div class="organize"><span>MARKET CAP:</span><span class="market-cap"></span></div>
+            <div class="organize"><span>EXCHANGE:</span><span class="exchange"></span></div>
+            <div class="organize"><span>CURRENCY:</span><span class="currency"></span></div>
+            <div class="organize"><span>COUNTRY:</span><span class="country"></span></div>
+            <div class="organize"><span>SECTOR:</span><span class="sector"></span></div>
+            <div class="organize"><span>INDUSTRY:</span><span class="industry"></span></div>
+            <hr>
+            <div class="organize"><span>ANALYST TARGET PRICE:</span><span class="analyst-target"></span></div>
+            <div class="prices"><span class="price-c"></span><span class="currency"></span><span class="arrow"></span></div>
+            <div class="prices"><span class="price-o"></span><span class="currency currency-o"></span></div>
+            <hr>
+            <div>
+                <canvas id="myChart" height="130"></canvas>
+            </div>
+            <div class="more-info"><button id="more-info-button">more info</button></div>
+            <div class="less-info"><button id="less-info-button">less info</button></div>
+
+        </div>
+        <div class="container">
+            <div class="boxes">
+                <div class="company-overview">
+
+                    <hr>
+
+                    <div class="organize"><span>PE:</span><span class="num pe-ratio"></span><span class="circle pe"></span></div>
+                    <div class="organize"><span>PB:</span><span class="num pb-ratio"></span><span class="circle pb"></span></div>
+                    <div class="organize"><span>P/S:</span><span class="num ps-ratio"></span><span class="circle ps"></span></div>
+                    <div class="organize"><span>EPS: </span><span class="num eps-value"></span><span class="circle eps"></span></div>
+                    <div class="organize"><span>ROE: </span><span class="num roe-ratio"></span><span class="circle roe"></span></div>
+                    <div class="organize"><span>ROA: </span><span class="num roa-ratio"></span><span class="circle roa"></span></div>
+                    <hr>
+                    <div class="organize"><span>DPS:</span><span class="num dps-value"></span><span class="circle dps"></span></div>
+                    <div class="organize"><span>EBITDA:</span><span class="num ebitda-value"></span><span class="circle ebitda"></span></div>
+                    <div class="organize"><span>BETA:</span><span class="num beta-value"></span><span class="circle beta"></span></div>
+                    <div class="organize"><span>EvToEBITDA:</span><span class="num evtoebitda-value"></span><span class="circle evtoebitda"></span></div>
+                    <div class="organize"><span>PrMARGIN:</span><span class="num pmargin-value"></span><span class="circle pmargin"></span></div>
+
+                </div>
+                <div class="cashflow">
+                    <hr>
+                    <p>annual reports</p>
+                    <hr>
+                    <div class="organize"><span>CFI:</span><span class="num cfi-value-a"></span><span class="circle cfi-a"></span></div>
+                    <div class="organize"><span>CFF:</span><span class="num cff-value-a"></span><span class="circle cff-a"></span></div>
+                    <div class="organize"><span>CFO:</span><span class="num cfo-value-a"></span><span class="circle cfo-a"></span></div>
+                    <hr>
+                    <p>quarterly reports</p>
+                    <hr>
+                    <div class="organize"><span>CFI:</span><span class="num cfi-value-q"></span><span class="circle cfi-q"></span></div>
+                    <div class="organize"><span>CFF:</span><span class="num cff-value-q"></span><span class="circle cff-q"></span></div>
+                    <div class="organize"><span>CFO:</span><span class="num cfo-value-q"></span><span class="circle cfo-q"></span></div>
+                </div>
+            </div>
+            <div class="myChart1">
+                <canvas id="myChart1" height="130"></canvas>
+            </div>
+            <div class="myChart2">
+                <canvas id="myChart2" height="130"></canvas>
+            </div>
+            <div class="news">
+                <div class="newspaper"><i class="far fa-newspaper"></i></div>
+                <ul id="new"></ul>
+
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

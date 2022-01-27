@@ -1,0 +1,378 @@
+    ::-webkit-scrollbar {
+       width: 1px;
+   }
+   
+   html {
+       scroll-behavior: smooth;
+   }
+   
+   body {
+       overflow-x: hidden;
+       font-family: 'Quicksand', sans-serif;
+       font-weight: 700;
+       font-size: 12px;
+       .sorry {
+           background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+           border-radius: 3px;
+           text-align: center;
+           display: none;
+           h2 {
+               padding: 2em 0;
+           }
+       }
+       .balance-sheet {
+           background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8));
+           height: 85vh;
+           position: absolute;
+           left: 0;
+           bottom: 0;
+           border-radius: 3px;
+           color: white;
+           display: flex;
+           justify-content: space-between;
+           line-height: 2.5em;
+           overflow-y: scroll;
+           margin-bottom: 1em;
+           transform: scaleX(0);
+           transform-origin: left;
+           transition: 2s;
+           ul {
+               padding: 0;
+               li {
+                   margin: 0 2em;
+                   list-style: none;
+               }
+           }
+           #elements {
+               text-align: start;
+           }
+           #values {
+               text-align: end;
+           }
+       }
+       #bell,
+       #close {
+           position: absolute;
+           font-size: 24px;
+           cursor: pointer;
+           display: none;
+       }
+       #bell,
+       #close {
+           background-color: transparent;
+           border: none;
+       }
+       #bell {
+           &:hover {
+               &::after {
+                   content: ' balance sheet';
+               }
+           }
+       }
+       #close {
+           &:hover {
+               &::after {
+                   content: ' close';
+               }
+           }
+       }
+       form {
+           display: flex;
+           justify-content: center;
+           margin-bottom: 2em;
+           input#search {
+               height: 30px;
+               width: 250px;
+           }
+           input#search,
+           button {
+               background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+               border: none;
+               margin: .5em;
+               border-radius: 3px;
+               color: white;
+               cursor: pointer;
+               &:hover {
+                   background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5));
+               }
+               &:focus,
+               &:active {
+                   outline: none;
+               }
+           }
+       }
+       .suggestions {
+           border-radius: 5px;
+           margin-bottom: 5%;
+           display: none;
+           li {
+               list-style: none;
+               button {
+                   background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+                   color: white;
+                   border: none;
+                   cursor: pointer;
+                   width: 100%;
+                   margin-top: 1%;
+                   border-radius: 3px;
+                   text-align: start;
+                   &:hover {
+                       background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5));
+                   }
+               }
+           }
+       }
+       .general-info {
+           border-radius: 5px;
+           padding: 2em;
+           text-align: center;
+           background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+           #myChart {
+               background-color: rgba(255, 255, 255, .5);
+               border-radius: 5px;
+           }
+           #more-info-button,
+           #less-info-button {
+               background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3));
+               margin-top: 2%;
+               border-radius: 3px;
+               border: none;
+               cursor: pointer;
+               font-weight: 700;
+               color: white;
+               &:hover {
+                   background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5));
+               }
+           }
+           .less-info {
+               display: none;
+           }
+           .organize {
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+           }
+           .industry {
+               text-align: end;
+           }
+           .prices {
+               margin-top: 5%;
+               .price-c {
+                   font-size: 24px;
+                   &::before {
+                       content: 'c:';
+                       font-size: 12px;
+                       margin-right: 12px;
+                   }
+               }
+               .price-o {
+                   font-size: 18px;
+                   &::before {
+                       content: 'o:';
+                       font-size: 12px;
+                       margin-right: 12px;
+                   }
+                   .currency-o {
+                       font-size: 12px;
+                   }
+               }
+           }
+       }
+       .company-overview {
+           border-radius: 5px;
+           padding: 2em;
+           background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+           text-align: center;
+           .circle {
+               width: .5em;
+               height: .5em;
+               border-radius: 50%;
+               margin-top: .5em;
+           }
+           &::before {
+               content: 'OVERVIEW';
+               color: white
+           }
+           .organize {
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+           }
+       }
+       .cashflow {
+           border-radius: 5px;
+           padding: 2em;
+           text-align: center;
+           .circle {
+               width: .5em;
+               height: .5em;
+               border-radius: 50%;
+               margin-top: .5em;
+           }
+           &::before {
+               content: 'CASHFLOW';
+               color: white
+           }
+           .organize {
+               display: flex;
+               flex-direction: row;
+               justify-content: space-between;
+           }
+       }
+       .news {
+           border-radius: 5px;
+           padding: 2em;
+           .newspaper {
+               text-align: center;
+           }
+           #new {
+               list-style: none;
+               padding: 0;
+               margin-bottom: 2em;
+               li {
+                   p {
+                       height: 4em;
+                       overflow: hidden;
+                   }
+                   hr {
+                       border: 1px solid black;
+                   }
+                   a {
+                       color: black;
+                   }
+               }
+           }
+       }
+       .myChart1,
+       .myChart2 {
+           display: none;
+           margin-bottom: 5%;
+           #myChart1,
+           #myChart2 {
+               background-color: rgba(255, 255, 255, .5);
+               border-radius: 5px;
+           }
+       }
+   }
+   
+   .general-info,
+   .cashflow,
+   .company-overview,
+   .news {
+       display: none;
+   }
+   
+   @media(min-width:800px) {
+       body {
+           background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url("https://images.unsplash.com/photo-1533912295802-535da631e9d4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80");
+           background-repeat: no-repeat;
+           background-size: cover;
+           background-position-y: 60%;
+           background-attachment: fixed;
+           overflow-y: hidden;
+           width: 80vw;
+           height: 100vh;
+           margin: 4em auto;
+           .balance-sheet {
+               width: 40em;
+           }
+           #bell,
+           #close {
+               left: 0.5em;
+           }
+       }
+       .sections {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+       }
+       .container {
+           height: 40em;
+           overflow-y: scroll;
+       }
+       .boxes {
+           display: grid;
+           grid-template-columns: repeat(2, 1fr);
+           gap: 2em;
+           height: 66%;
+       }
+       .general-info {
+           width: 75%;
+           margin-right: 2em;
+       }
+       .company-overview,
+       .cashflow {
+           height: 72%;
+       }
+       .cashflow {
+           background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+       }
+       .news {
+           display: none;
+           background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+           margin-bottom: 5%;
+           #news {
+               li {
+                   color: black;
+               }
+           }
+       }
+   }
+   
+   @media(max-width:800px) {
+       body {
+           background-image: url('https://images.unsplash.com/photo-1546514355-7fdc90ccbd03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80');
+           background-repeat: no-repeat;
+           background-size: cover;
+           background-attachment: fixed;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-content: center;
+           margin: 5%;
+           .balance-sheet {
+               width: 100%;
+           }
+           #bell,
+           #close {
+               right: 16px;
+           }
+           #bell {
+               top: 9%
+           }
+           #close {
+               z-index: 2;
+           }
+           .general-info,
+           .company-overview,
+           .cashflow {
+               margin-top: 5%;
+           }
+           .cashflow {
+               background: linear-gradient(rgba(0, 0, 0, .2), rgba(255, 255, 255, .5));
+           }
+           .news {
+               background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5));
+               margin-top: 5%;
+           }
+           .container {
+               display: flex;
+               flex-direction: column;
+               .myChart1 {
+                   order: 1;
+               }
+               .myChart2 {
+                   order: 2;
+               }
+               .boxes {
+                   order: 3;
+               }
+               .news {
+                   order: 4;
+               }
+               .myChart1,
+               .myChart2 {
+                   margin-top: 5%;
+               }
+           }
+       }
+   }
